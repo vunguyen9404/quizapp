@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="659.0" style="-fx-background-color: #fff; -fx-border-color: #ecf0f1; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Components.AddQuestionController">
+   <children>
+      <JFXTextArea fx:id="taCauHoi" cacheShape="false" centerShape="false" focusTraversable="false" labelFloat="true" prefHeight="67.0" prefWidth="619.0" promptText="Câu hỏi:" scaleShape="false" style="-fx-background-color: #fff;">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextArea>
+      <JFXTextField fx:id="tfDapAnA" cacheShape="false" centerShape="false" focusTraversable="false" labelFloat="true" prefHeight="28.0" prefWidth="619.0" promptText="Đáp Án A:" scaleShape="false" style=": ;">
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="tfDapAnB" cacheShape="false" centerShape="false" focusTraversable="false" labelFloat="true" prefHeight="28.0" prefWidth="659.0" promptText="Đáp Án B:" scaleShape="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="tfDapAnC" cacheShape="false" centerShape="false" focusTraversable="false" labelFloat="true" prefHeight="28.0" prefWidth="659.0" promptText="Đáp Án C:" scaleShape="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="tfDapAnD" cacheShape="false" centerShape="false" focusTraversable="false" labelFloat="true" prefHeight="28.0" prefWidth="659.0" promptText="Đáp Án D:" scaleShape="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <HBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="659.0">
+         <children>
+            <JFXComboBox fx:id="cbDapAnDungCauHoi" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="31.0" prefWidth="123.0" promptText="Đáp Án Đúng" scaleShape="false">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></JFXComboBox>
+            <JFXComboBox fx:id="cbMonHocCauHoi" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="31.0" prefWidth="165.0" promptText="Môn Học" scaleShape="false">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXComboBox>
+            <Pane prefHeight="73.0" prefWidth="102.0" HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="btnThemCauHoi" cacheShape="false" centerShape="false" focusTraversable="false" onAction="#clickedThem" prefHeight="42.0" prefWidth="138.0" scaleShape="false" style="-fx-background-color: rgba(202,202,202,0.2);" text="Thêm" textFill="#4f4f4f">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnHuy" cacheShape="false" centerShape="false" focusTraversable="false" onAction="#clickClosed" prefHeight="42.0" prefWidth="135.0" scaleShape="false" style="-fx-background-color: rgba(202,202,202,0.2);" text="Hủy" textFill="#4f4f4f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</VBox>

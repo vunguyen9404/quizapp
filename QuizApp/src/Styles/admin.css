@@ -1,0 +1,34 @@
+
+.dashboad-item:hover {
+    -fx-background-color: rgba(202,202,202,0.2);
+}
+.dashboad-item--active {
+    -fx-background-color: rgba(202,202,202,0.4);
+}
+
+.lv-lop .list-cell {
+    -fx-background-color: #fff;
+}
+
+.lv-lop .list-cell:hover {
+    -fx-background-color: rgba(202,202,202,0.2);
+}
+
+.list-cell__button {
+    -fx-opacity: 0.6;
+}
+
+.list-cell__button:hover {
+    -fx-opacity: 1;
+}
+
+.btn-gray {
+    -fx-background-color: rgba(202,202,202,0.2);
+    -fx-padding: 10 20 10 20;
+}
+.list-cell--gray:hover {
+    -fx-background-color: rgba(202,202,202,0.2);
+}
+.list-cell--gray:selected {
+    -fx-background-color: rgba(202,202,202,0.4);
+}
