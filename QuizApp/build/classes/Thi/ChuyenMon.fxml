@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="222.0" prefWidth="498.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Thi.ChuyenMonController">
+   <children>
+      <Text fx:id="txtThongBao" fill="#4f4f4f" layoutX="44.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn vừa kết thúc thi môn:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtMonThi" fill="#4f4f4f" layoutX="235.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lịch Sử">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnThiMonTiep" layoutX="269.0" layoutY="119.0" onAction="#clickedThiMonTiep" prefHeight="55.0" prefWidth="192.0" style="-fx-background-color: rgba(202,202,202,0.2);" text="Thi Môn Tiếp">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <Separator layoutX="44.0" layoutY="92.0" prefHeight="0.0" prefWidth="417.0" />
+   </children>
+</AnchorPane>

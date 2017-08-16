@@ -15,6 +15,7 @@ import java.util.List;
  * @author vunvd
  */
 public interface IAQuizApp extends Remote {
+    public String getDotThiID() throws RemoteException, SQLException;
     public int tinhtong(int a, int b) throws RemoteException, SQLException;
     
     public boolean isSvLogin(String svID, String svPass) throws RemoteException, SQLException;
@@ -29,6 +30,8 @@ public interface IAQuizApp extends Remote {
     public boolean isValidLop(String classTen) throws RemoteException, SQLException;
     
     public List<SinhVien> getListSinhVien(int classID) throws RemoteException, SQLException;
+    public List<SinhVien> getListSinhVien() throws RemoteException, SQLException;
+    public SinhVien getSinhVien(String svID) throws RemoteException, SQLException;
     public String getLastSinhVien() throws RemoteException, SQLException;
     public void addSinhVien(SinhVien sv) throws RemoteException, SQLException;
     public void deleteSinhVien(String svID) throws RemoteException, SQLException;
@@ -41,13 +44,15 @@ public interface IAQuizApp extends Remote {
     public boolean isValidMonHoc(String monName) throws RemoteException, SQLException;
     
     public List<CauHoi> getListCauHoi(int monID) throws RemoteException, SQLException;
+    public CauHoi getCauHoi(int cauhoiID) throws RemoteException, SQLException;
     public void addCauHoi(CauHoi cauhoi) throws RemoteException, SQLException;
     public void deleteCauHoi(int cauhoiID) throws RemoteException, SQLException;
     public void modifyCauHoi(int cauhoiID, CauHoi cauhoi) throws RemoteException, SQLException;
     public boolean isValidCauHoi(String cauhoi) throws RemoteException, SQLException;
     
-    public List<DeThi> getListDeThi(int monID, int dotthiID) throws RemoteException, SQLException;
+    public List<DeThi> getListDeThi(int monID, String dotthiID) throws RemoteException, SQLException;
     public void addDeThi(DeThi dethi) throws RemoteException, SQLException;
+    public DeThi getDeThi(String dethiID) throws RemoteException, SQLException;
     
     public List<DotThi> getListDotThi() throws RemoteException, SQLException;
     public void addDotThi(DotThi thi) throws RemoteException, SQLException;
@@ -58,4 +63,7 @@ public interface IAQuizApp extends Remote {
     public List<MonHoc> getDotThiMon(String dotthiID) throws RemoteException, SQLException;
     public void addDotThiLop(String dotthiID, Lop lop) throws RemoteException, SQLException;
     public void addDotThiMon(String dotthiID, MonHoc mon) throws RemoteException, SQLException;
+    
+    public void addDiem(DiemThi diem) throws RemoteException, SQLException;
+    public List<DiemThi> getDiemThi(String svID, String dotthiID) throws RemoteException, SQLException;
 }

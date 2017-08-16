@@ -13,12 +13,12 @@
    <children>
       <AnchorPane prefHeight="360.0" prefWidth="497.0">
          <children>
-            <JFXTextField labelFloat="true" layoutX="72.0" layoutY="101.0" prefHeight="36.0" prefWidth="359.0" promptText="Tên Đăng Nhập">
+            <JFXTextField fx:id="tfID" labelFloat="true" layoutX="72.0" layoutY="101.0" prefHeight="36.0" prefWidth="359.0" promptText="Tên Đăng Nhập">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField labelFloat="true" layoutX="72.0" layoutY="176.0" prefHeight="36.0" prefWidth="359.0" promptText="Mật Khẩu">
+            <JFXPasswordField fx:id="tfPass" labelFloat="true" layoutX="72.0" layoutY="176.0" prefHeight="36.0" prefWidth="359.0" promptText="Mật Khẩu">
                <font>
                   <Font size="16.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Image url="@../Assets/Password_50px.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="258.0" layoutY="259.0" prefHeight="44.0" prefWidth="175.0" style="-fx-background-color: rgba(202,202,202,0.2);" text="Đăng Nhập" textFill="#4f4f4f">
+            <JFXButton layoutX="258.0" layoutY="259.0" onAction="#clickedDangNhap" prefHeight="44.0" prefWidth="175.0" style="-fx-background-color: rgba(202,202,202,0.2);" text="Đăng Nhập" textFill="#4f4f4f">
                <font>
                   <Font size="16.0" />
                </font>

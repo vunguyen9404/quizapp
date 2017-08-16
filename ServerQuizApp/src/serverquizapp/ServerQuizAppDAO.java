@@ -7,6 +7,7 @@ package serverquizapp;
 
 import iaquizapp.CauHoi;
 import iaquizapp.DeThi;
+import iaquizapp.DiemThi;
 import iaquizapp.DotThi;
 import iaquizapp.Lop;
 import iaquizapp.MonHoc;
@@ -33,13 +34,18 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
     
     
     @Override
-    public boolean isSvLogin(String svID, String svPass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isSvLogin(String svID, String svPass) throws SQLException, RemoteException {
+        boolean login = false;
+        List<SinhVien> list = getListSinhVien();
+        login = list.stream().anyMatch(x -> x.getSvID().equals(svID) && x.getSvPass().equals(svPass));
+        return login;
     }
 
     @Override
     public boolean isAdminLogin(String admID, String admPass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean login = false;
+        
+        return login;
     }
 
     @Override
@@ -72,6 +78,8 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
                     rs.getString("classTen")
             ));
         }
+        rs.close();
+        stm.close();
         return list;
     }
 
@@ -108,6 +116,8 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
                     rs.getInt("monID")
             ));
         }
+        rs.close();
+        stm.close();
         return list;
     }
 
@@ -318,12 +328,12 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
     }
 
     @Override
-    public List<DeThi> getListDeThi(int monID, int dotthiID) throws RemoteException, SQLException {
+    public List<DeThi> getListDeThi(int monID, String dotthiID) throws RemoteException, SQLException {
         String sql = "SELECT * FROM DeThi WHERE dethiMon = ? AND dotthiID = ?";
         List<DeThi> list = new ArrayList<>();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, monID);
-        stm.setInt(2, dotthiID);
+        stm.setString(2, dotthiID);
         ResultSet rs = stm.executeQuery();
         while (rs.next()) {
             list.add(new DeThi(
@@ -381,7 +391,17 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
 
     @Override
     public List<MonHoc> getDotThiMon(String dotthiID) throws RemoteException, SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM dbo.DotThi FULL JOIN dbo.DotThiMon ON DotThiMon.dotthiID = DotThi.dotthiID INNER JOIN dbo.MonHoc ON MonHoc.monID = DotThiMon.monID WHERE DotThi.dotthiID = ?";
+        List<MonHoc> list = new ArrayList<>();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, dotthiID);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {            
+            list.add(new MonHoc(rs.getInt("monID"), rs.getString("monName")));
+        }
+        rs.close();;
+        stm.close();
+        return list;
     }
 
     @Override
@@ -402,5 +422,120 @@ public class ServerQuizAppDAO extends UnicastRemoteObject implements iaquizapp.I
         stm.setInt(2, mon.getMonID());
         stm.executeUpdate();
         stm.close();
+    }
+
+    @Override
+    public List<SinhVien> getListSinhVien() throws RemoteException, SQLException {
+        String sql = "SELECT * FROM SinhVien";
+        List<SinhVien> list = new ArrayList<>();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {
+            list.add(new SinhVien(
+                    rs.getString("svID"), 
+                    rs.getString("svPass"),
+                    rs.getString("svHoTen"), 
+                    rs.getInt("svGioiTinh"), 
+                    rs.getString("svEmail"), 
+                    rs.getString("svSdt"),
+                    rs.getInt("classID")
+            ));
+        }
+        rs.close();
+        stm.close();
+        return list;
+    }
+
+    @Override
+    public SinhVien getSinhVien(String svID) throws RemoteException, SQLException {
+        String sql = "SELECT * FROM SinhVien INNER JOIN Lop ON Lop.classID = SinhVien.classID WHERE SinhVien.svID = ?";
+        SinhVien sv = null;
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, svID);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {
+            sv = new SinhVien(
+                    rs.getString("svID"), 
+                    rs.getString("svPass"),
+                    rs.getString("svHoTen"), 
+                    rs.getInt("svGioiTinh"), 
+                    rs.getString("svEmail"), 
+                    rs.getString("svSdt"), 
+                    rs.getString("classTen")
+            );
+        }
+        return sv;
+    }
+
+    @Override
+    public String getDotThiID() throws RemoteException, SQLException {
+        return "kd24fS8B27XLfmya";
+    }
+
+    @Override
+    public DeThi getDeThi(String dethiID) throws RemoteException, SQLException {
+        String sql = "SELECT * FROM DeThi WHERE dethiID = ?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, dethiID);
+        ResultSet rs = stm.executeQuery();
+        DeThi dethi = null;
+        while (rs.next()) {
+            dethi = new DeThi(rs.getString("dethiID"), rs.getInt("dethiSoCau"), rs.getString("dethiDSCauHoi"), rs.getInt("dethiMon"), rs.getString("dotthiID"));
+        }
+        rs.close();
+        stm.close();
+        return dethi;
+    }
+
+    @Override
+    public CauHoi getCauHoi(int cauhoiID) throws RemoteException, SQLException {
+        String sql = "SELECT * FROM CauHoi WHERE cauhoiID = ?";
+        CauHoi cauhoi = null;
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, cauhoiID);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {            
+            cauhoi = new CauHoi(
+                    rs.getInt("cauhoiID"),
+                    rs.getString("cauhoiNoiDung"),
+                    rs.getString("cauhoiDapAnA"),
+                    rs.getString("cauhoiDapAnB"),
+                    rs.getString("cauhoiDapAnC"),
+                    rs.getString("cauhoiDapAnD"), 
+                    rs.getString("cauhoiDapAnDung"),
+                    rs.getInt("monID")
+            );
+        }
+        rs.close();
+        stm.close();
+        return cauhoi;
+    }
+
+    @Override
+    public void addDiem(DiemThi diem) throws RemoteException, SQLException {
+        String sql = "INSERT INTO Diem (dotthiID, svID, monID, diemSo) VALUES (?,?,?,?)";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, diem.getDotthiID());
+        stm.setString(2, diem.getSvID());
+        stm.setInt(3, diem.getMonID());
+        stm.setFloat(4, diem.getDiemSo());
+        stm.executeUpdate();
+        stm.close();
+    }
+
+    @Override
+    public List<DiemThi> getDiemThi(String svID, String dotthiID) throws RemoteException, SQLException {
+        List<DiemThi> list = new ArrayList<>();
+        String sql = "SELECT * FROM dbo.Diem FULL JOIN dbo.MonHoc ON MonHoc.monID = Diem.monID WHERE dotthiID = ? AND svID = ?;";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, dotthiID);
+        stm.setString(2, svID);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {            
+            list.add(new DiemThi(rs.getString("dotthiID"), rs.getString("svID"), rs.getInt("monID"), rs.getFloat("diemSo"), rs.getString("monName")));
+        }
+        rs.close();
+        stm.close();
+        return list;
     }
 }

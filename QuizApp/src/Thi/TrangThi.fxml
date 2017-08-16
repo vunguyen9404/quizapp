@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Thi.TrangThiController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="965.0" style="-fx-background-color: #ecf0f1;">
+         <children>
+            <VBox prefHeight="549.0" prefWidth="228.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="53.62" radius="28.5325" width="62.51" />
+               </effect>
+               <children>
+                  <Pane prefHeight="111.0" prefWidth="228.0" style="-fx-background-color: rgba(202,202,202,0.2); -fx-border-color: #ecf0f1; -fx-border-width: 0 0 1 0;">
+                     <children>
+                        <Text fx:id="txtSvTen" fill="#4f4f4f" layoutX="21.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyễn Văn Vũ">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtSvID" fill="#4f4f4f" layoutX="21.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã SV: vunvd00172" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="64.0" prefWidth="228.0">
+                     <children>
+                        <Text fill="#4f4f4f" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Môn Thi:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtMonThi" fill="#807e7e" layoutX="87.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lịch Sử">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="14.0" layoutY="60.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="64.0" prefWidth="228.0">
+                     <children>
+                        <Text fill="#4f4f4f" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã Đề:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtMaDe" fill="#807e7e" layoutX="81.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="14.0" layoutY="60.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="62.0" prefWidth="228.0">
+                     <children>
+                        <Text fill="#4f4f4f" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số Câu:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtCauHienTai" fill="#807e7e" layoutX="74.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 /">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="14.0" layoutY="60.0" prefWidth="200.0" />
+                        <Text fx:id="txtSoCau" fill="#ff2121" layoutX="105.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="98.0" prefWidth="217.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="549.0" prefWidth="739.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <children>
+                  <Pane prefHeight="549.0" prefWidth="743.0" style="-fx-background-color: #fff;">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Pane layoutY="-3.0" prefHeight="118.0" prefWidth="728.0" style="-fx-background-color: rgba(202,202,202,0.2); -fx-border-color: #ecf0f1; -fx-border-width: 0 0 1 0;">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Câu hỏi:" textFill="#4f4f4f">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="txtNoiDungCauHoi" layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1+1=?">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Separator layoutX="14.0" layoutY="38.0" prefWidth="200.0" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="479.0" prefHeight="73.0" prefWidth="718.0" style="-fx-border-color: #ecf0f1; -fx-border-width: 1 0 0 0;">
+                           <children>
+                              <JFXButton fx:id="btnTroLai" layoutX="14.0" layoutY="20.0" onAction="#clickedTroLai" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: rgba(202,202,202,0.2);" text="Trở Lại">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="btnTiep" layoutX="495.0" layoutY="18.0" onAction="#clickedTiep" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: rgba(202,202,202,0.2);" text="Tiếp Theo">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <ImageView fx:id="imgNext" fitHeight="21.0" fitWidth="27.0" layoutX="628.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Double%20Right_32px.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="imgPrev" fitHeight="21.0" fitWidth="27.0" layoutX="65.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Double%20Left_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="-1.0" layoutY="111.0" prefHeight="363.0" prefWidth="718.0">
+                           <children>
+                              <JFXRadioButton fx:id="rdA" layoutX="24.0" layoutY="26.0" text="A: tiền là gì" textFill="#4f4f4f">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rdC" layoutX="24.0" layoutY="190.0" text="C: tiền là gì" textFill="#4f4f4f">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rdB" layoutX="24.0" layoutY="106.0" text="B:  tiền là gì">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rdD" layoutX="24.0" layoutY="267.0" text="D tiền là gì">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <Separator layoutX="41.0" layoutY="79.0" prefHeight="3.0" prefWidth="626.0" />
+                              <Separator layoutX="41.0" layoutY="163.0" prefHeight="3.0" prefWidth="626.0" />
+                              <Separator layoutX="41.0" layoutY="243.0" prefHeight="3.0" prefWidth="626.0" />
+                              <Separator layoutX="41.0" layoutY="335.0" prefHeight="3.0" prefWidth="626.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</StackPane>

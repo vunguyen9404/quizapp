@@ -16,12 +16,14 @@ import javafx.stage.Stage;
  * @author vunvd
  */
 public class Login extends Application {
-    
+    private static Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Admin/AdminHome.fxml"));
+        setStage(stage);
+        Parent root = FXMLLoader.load(getClass().getResource("/quizapp/Login.fxml"));
         Scene scene = new Scene(root);
         stage.setResizable(false);
+        
         stage.setScene(scene);
         stage.show();
     }
@@ -31,6 +33,14 @@ public class Login extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        Login.stage = stage;
     }
     
 }
